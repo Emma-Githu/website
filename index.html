@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海贸智联——AI辅助外贸商务技术对接</title>
+  <link rel="stylesheet" href="css/main.css?v=20261105a1">
+</head>
+<body>
+
+  <!-- ========== 登录页（未登录时全屏显示） ========== -->
+  <div id="login-screen">
+    <div class="login-card">
+      <div class="login-brand">
+        <div class="login-logo">
+          <div class="logo-icon">海</div>
+        </div>
+        <h1 class="login-title">海贸智联</h1>
+        <p class="login-subtitle">跨境 B2B 外贸业务智能协同平台</p>
+        <p class="login-intro">让外贸沟通更顺畅，让订单跟进更高效</p>
+      </div>
+      <div class="login-auto-box" style="text-align:center;padding:24px 0;">
+        <p style="font-size:14px;color:var(--text-sub);margin-bottom:16px;">正在自动登录系统，请稍候…</p>
+        <div class="login-spinner" style="width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto;"></div>
+      </div>
+      <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+    </div>
+    <p class="login-copyright">海贸智联 · 让外贸沟通更顺畅，让订单跟进更高效</p>
+  </div>
+
+  <!-- ========== 左侧导航栏 ========== -->
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="logo-icon">海</div>
+      <span class="logo-text">海贸智联</span>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="#" class="active" data-page="home"><span class="nav-icon">🏠</span><span class="nav-label">首页</span></a></li>
+      <li><a href="#" data-page="workspace"><span class="nav-icon">🤖</span><span class="nav-label">AI智能工作台</span></a></li>
+      <li><a href="#" data-page="email"><span class="nav-icon">✉️</span><span class="nav-label">邮件与询盘助手</span></a></li>
+      <li><a href="#" data-page="parse"><span class="nav-icon">&#128196;</span><span class="nav-label">订单智能解析</span></a></li>
+      <li><a href="#" data-page="order"><span class="nav-icon">📋</span><span class="nav-label">订单与待办管理</span></a></li>
+      <li><a href="#" data-page="spec"><span class="nav-icon">🔧</span><span class="nav-label">订单异常核对</span></a></li>
+      <li><a href="#" data-page="kb"><span class="nav-icon">&#128218;</span><span class="nav-label">外贸知识库</span></a></li>
+      <li><a href="#" data-page="customer"><span class="nav-icon">👥</span><span class="nav-label">客户档案与AI记忆</span></a></li>
+      <li><a href="#" data-page="review"><span class="nav-icon">✅</span><span class="nav-label">AI结果审核中心</span></a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <button type="button" class="sidebar-toggle" id="sidebar-toggle" title="收起侧边栏 (Ctrl+B)" aria-label="收起侧边栏">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        <span class="toggle-label">收起侧边栏</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========== 主区域 ========== -->
+  <div class="main">
+
+    <!-- 顶部标题栏 -->
+    <header class="topbar">
+      <div class="topbar-title" id="topbar-title">首页</div>
+      <div class="topbar-right">
+        <div class="topbar-user">
+          <div class="avatar" id="user-avatar">评</div>
+          <span class="user-name" id="user-name">评审评委</span>
+        </div>
+        <!-- 退出登录按钮已隐藏（免登录模式） -->
+        <!-- <button class="logout-btn" id="logout-btn" title="退出登录">退出登录</button> -->
+      </div>
+    </header>
+
+    <!-- 中央工作台 -->
+    <main class="content">
+
+      <!-- ========== 首页 ========== -->
+      <section class="page active" id="page-home">
+
+      <!-- 品牌欢迎区 -->
+      <section class="home-hero">
+        <div class="home-hero-text">
+          <h1 class="home-hero-title">外贸业务智能协同工作台</h1>
+          <p class="home-hero-desc">从客户询盘到订单交付，让外贸业务沟通、订单处理与风险管理更加高效。</p>
+        </div>
+        <div class="home-hero-actions">
+          <button type="button" class="home-action-btn primary" data-page="workspace">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4"/><circle cx="9" cy="4" r="1.2"/><circle cx="15" cy="4" r="1.2"/><rect x="8" y="12" width="8" height="4" rx="1"/></svg>
+            进入 AI 智能工作台
+          </button>
+          <button type="button" class="home-action-btn" data-page="parse">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>
+            进入订单与单证解析
+          </button>
+        </div>
+      </section>
+
+      <!-- 业务功能模块 -->
+      <h2 class="section-title">业务功能模块</h2>
+      <section class="feature-grid">
+        <div class="feature-card" data-page="workspace">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4"/><circle cx="9" cy="4" r="1.2"/><circle cx="15" cy="4" r="1.2"/><rect x="8" y="12" width="8" height="4" rx="1"/></svg></div>
+          <div class="feature-name">AI智能工作台</div>
+          <div class="feature-desc">自然语言下达跟单指令，AI Agent 自动拆解任务并调度各模块协同执行</div>
+          <span class="feature-link">进入页面<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="feature-card" data-page="email">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+          <div class="feature-name">邮件与询盘助手</div>
+          <div class="feature-desc">询盘意图识别、多语种邮件起草与回复建议，跨文化沟通得体专业</div>
+          <span class="feature-link">进入页面<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="feature-card" data-page="parse">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><circle cx="11" cy="15" r="2.5"/><path d="M13 17l2 2"/></svg></div>
+          <div class="feature-name">订单智能解析</div>
+          <div class="feature-desc">上传 PI/PO/报价单，AI 自动提取关键字段并结构化录入，支持 Excel/PDF</div>
+          <span class="feature-link">进入页面<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="feature-card" data-page="order">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 10h6M9 14h6M9 18h3"/></svg></div>
+          <div class="feature-name">订单与待办管理</div>
+          <div class="feature-desc">订单全生命周期追踪、关键节点提醒、待办自动生成与进度看板</div>
+          <span class="feature-link">进入页面<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="feature-card" data-page="spec">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="14" r="5.5"/><path d="M14.5 9.5L20 4"/><path d="M17 4h3v3"/><path d="M8 14l1.5 1.5L12 13"/></svg></div>
+          <div class="feature-name">订单异常核对</div>
+          <div class="feature-desc">订单与 PI/PO/合同等单证关键字段自动比对，差异高亮提示，降低业务差错</div>
+          <span class="feature-link">进入页面<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="feature-card" data-page="kb">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19a2 2 0 0 1 2-2h13"/><path d="M9 7h6M9 11h4"/></svg></div>
+          <div class="feature-name">外贸知识库</div>
+          <div class="feature-desc">贸易术语、合规要求、行业知识 RAG 检索问答，答案可溯源引用</div>
+          <span class="feature-link">进入页面<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="feature-card" data-page="customer">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.5"/><path d="M15.5 14.5a4.5 4.5 0 0 1 5 4.5"/></svg></div>
+          <div class="feature-name">客户档案与AI记忆</div>
+          <div class="feature-desc">客户偏好与历史沟通自动沉淀，AI 长期记忆让跟进更懂客户</div>
+          <span class="feature-link">进入页面<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="feature-card" data-page="review">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div class="feature-name">AI结果审核中心</div>
+          <div class="feature-desc">AI 生成的邮件/解析/核对结果集中待审，人工确认后方可发出或归档</div>
+          <span class="feature-link">进入页面<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+        </div>
+      </section>
+
+      <!-- 业务数据概览（P10：真实数据动态读取） -->
+      <h2 class="section-title">业务数据概览</h2>
+      <section class="overview-grid">
+        <div class="stat-card">
+          <span class="stat-label">进行中订单</span>
+          <span class="stat-value" id="hm-stat-orders">&mdash;</span>
+          <span class="stat-trend" id="hm-stat-orders-trend">等待业务数据接入</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">待跟进询盘</span>
+          <span class="stat-value" id="hm-stat-inquiries">&mdash;</span>
+          <span class="stat-trend" id="hm-stat-inquiries-trend">等待业务数据接入</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">今日待办</span>
+          <span class="stat-value" id="hm-stat-todos">&mdash;</span>
+          <span class="stat-trend" id="hm-stat-todos-trend">等待业务数据接入</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">待审核结果</span>
+          <span class="stat-value" id="hm-stat-reviews">&mdash;</span>
+          <span class="stat-trend" id="hm-stat-reviews-trend">等待业务数据接入</span>
+        </div>
+      </section>
+
+      <!-- P10：数据管理（全系统备份与恢复） -->
+      <h2 class="section-title">数据管理</h2>
+      <section class="overview-grid hm-data-grid">
+        <div class="stat-card hm-data-card">
+          <span class="stat-label">全系统数据备份</span>
+          <span class="stat-trend">将订单、待办、客户档案、知识库、审核记录导出为 JSON 备份文件</span>
+          <button type="button" class="em-btn primary" id="hm-backup-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+            备份数据
+          </button>
+        </div>
+        <div class="stat-card hm-data-card">
+          <span class="stat-label">数据恢复</span>
+          <span class="stat-trend">从备份 JSON 文件恢复全部业务数据（恢复前将覆盖现有同类数据）</span>
+          <button type="button" class="em-btn" id="hm-restore-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+            选择备份文件
+          </button>
+          <input type="file" id="hm-restore-input" accept=".json,application/json" hidden>
+        </div>
+      </section>
+
+      <!-- 外贸业务协同流程 -->
+      <h2 class="section-title">外贸业务协同流程</h2>
+      <section class="flow-wrap">
+        <div class="flow-step" data-page="email">
+          <span class="flow-num">1</span>
+          <div class="flow-body">
+            <div class="flow-name">客户询盘</div>
+            <p class="flow-desc">接收并识别询盘意图</p>
+            <span class="flow-link">邮件与询盘助手</span>
+          </div>
+        </div>
+        <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="flow-step" data-page="workspace">
+          <span class="flow-num">2</span>
+          <div class="flow-body">
+            <div class="flow-name">商务沟通</div>
+            <p class="flow-desc">AI 辅助多语种往来沟通</p>
+            <span class="flow-link">AI智能工作台</span>
+          </div>
+        </div>
+        <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="flow-step" data-page="parse">
+          <span class="flow-num">3</span>
+          <div class="flow-body">
+            <div class="flow-name">订单与单证解析</div>
+            <p class="flow-desc">PI/PO 字段自动提取录入</p>
+            <span class="flow-link">订单智能解析</span>
+          </div>
+        </div>
+        <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="flow-step" data-page="spec">
+          <span class="flow-num">4</span>
+          <div class="flow-body">
+            <div class="flow-name">订单异常核对</div>
+            <p class="flow-desc">订单与单证字段比对</p>
+            <span class="flow-link">订单异常核对</span>
+          </div>
+        </div>
+        <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="flow-step" data-page="order">
+          <span class="flow-num">5</span>
+          <div class="flow-body">
+            <div class="flow-name">订单跟进</div>
+            <p class="flow-desc">关键节点追踪与待办</p>
+            <span class="flow-link">订单与待办管理</span>
+          </div>
+        </div>
+        <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="flow-step" data-page="review">
+          <span class="flow-num">6</span>
+          <div class="flow-body">
+            <div class="flow-name">人工审核</div>
+            <p class="flow-desc">AI 结果确认后归档</p>
+            <span class="flow-link">AI结果审核中心</span>
+          </div>
+        </div>
+      </section>
+
+      </section><!-- /首页 -->
+
+      <!-- ========== AI智能工作台 ========== -->
+      <section class="page" id="page-workspace">
+
+        <!-- 左侧：会话管理区 -->
+        <div class="ws-sessions">
+          <button type="button" class="ws-new-chat" id="ws-new-chat">
+            <span class="ws-new-icon">+</span>新建对话
+          </button>
+          <div class="ws-session-list" id="ws-session-list"></div>
+          <div class="ws-session-empty" id="ws-session-empty">
+            <div class="ws-session-empty-icon">&#128172;</div>
+            <p>暂无历史对话</p>
+            <p class="ws-session-empty-sub">点击上方按钮开始新对话</p>
+          </div>
+        </div>
+
+        <!-- 中间：对话工作区 -->
+        <div class="ws-main">
+          <div class="ws-header">
+            <div class="ws-header-left">
+              <h2 class="ws-title">AI智能工作台</h2>
+              <p class="ws-subtitle">以自然语言下达跟单指令，AI 助手协同执行全流程任务</p>
+            </div>
+            <span class="ws-status-badge ai-status-badge ai-status-online">AI 已接入 · 智谱 GLM</span>
+          </div>
+
+          <div class="ws-chat" id="ws-chat">
+            <div class="ws-welcome" id="ws-welcome">
+              <div class="ws-ai-avatar">&#129302;</div>
+              <h3 class="ws-welcome-title">您好，我是海贸智联 AI 助手</h3>
+              <p class="ws-welcome-desc">我可以协助您分析客户询盘、撰写商务邮件、解析订单文件、核对技术规格、查询外贸知识与生成跟单任务。<br>请选择下方常用任务快速开始，或直接在输入框描述您的需求。</p>
+              <div class="ws-quick-grid" id="ws-quick-grid"></div>
+            </div>
+            <div class="ws-messages" id="ws-messages"></div>
+          </div>
+
+          <div class="ws-input-area">
+            <div class="ws-files" id="ws-files"></div>
+            <div class="ws-input-row">
+              <button type="button" class="ws-file-btn" id="ws-file-btn" title="上传文件（支持 PDF / Excel）">&#128206;</button>
+              <input type="file" id="ws-file-input" accept=".pdf,.xlsx,.xls,.csv" multiple hidden>
+              <textarea class="ws-input" id="ws-input" rows="1" placeholder="请输入任务描述，或点击上方快捷任务快速开始…"></textarea>
+              <button type="button" class="ws-send-btn" id="ws-send-btn" title="发送">&#10148;</button>
+            </div>
+            <p class="ws-input-tip">支持上传 PDF、Excel 文件 &middot; AI 智能工作台 . 等待模型授权配置</p>
+          </div>
+        </div>
+
+        <!-- 右侧：任务辅助区（已隐藏） -->
+        <aside class="ws-aside" style="display:none;">
+          <div class="ws-info-card">
+            <h4 class="ws-info-title">当前任务</h4>
+            <p class="ws-info-text" id="ws-current-task">暂无进行中的任务。发送消息后，任务说明将显示在此处。</p>
+          </div>
+          <div class="ws-info-card">
+            <h4 class="ws-info-title">支持的业务模块</h4>
+            <ul class="ws-info-list">
+              <li>邮件与询盘助手</li>
+              <li>订单智能解析</li>
+              <li>订单异常核对</li>
+              <li>外贸知识库检索</li>
+              <li>订单与待办管理</li>
+            </ul>
+          </div>
+          <div class="ws-info-card">
+            <h4 class="ws-info-title">文件处理说明</h4>
+            <p class="ws-info-text">支持上传 PDF 与 Excel（.xlsx / .xls / .csv）文件，单次可选择多个文件。CSV/文本文件可直接 AI 解析，PDF/Excel 请粘贴文本内容。</p>
+          </div>
+          <div class="ws-info-card ws-exec-card">
+            <h4 class="ws-info-title">任务执行记录</h4>
+            <div class="ws-exec-empty" id="ws-exec-empty">
+              <p>暂无执行记录。<br>发送任务后，Agent 执行过程将在此展示。</p>
+            </div>
+            <div class="ws-exec-steps" id="ws-exec-steps"></div>
+          </div>
+        </aside>
+
+      </section>
+
+      <!-- ========== 邮件与询盘助手 ========== -->
+      <section class="page" id="page-email">
+        <div class="em-layout">
+
+          <!-- 左侧：客户询盘处理区 -->
+          <div class="em-panel">
+            <div class="em-panel-header">
+              <h2 class="em-panel-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+                客户询盘处理
+              </h2>
+              <!-- P10：跨模块查询知识库 -->
+              <button type="button" class="em-btn ghost" id="em-kb-btn" title="跳转外贸知识库查询贸易术语、支付结算等知识">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19a2 2 0 0 1 2-2h13"/><path d="M9 7h6M9 11h4"/></svg>
+                查询知识库
+              </button>
+            </div>
+            <div class="em-panel-body">
+              <div class="em-field">
+                <label class="em-label" for="em-inquiry">客户原始询盘</label>
+                <textarea class="em-textarea" id="em-inquiry" rows="7" placeholder="请粘贴客户原始询盘内容，后续可结合邮件类型、目标语言及客户背景进行智能处理。"></textarea>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label" for="em-type">邮件类型</label>
+                  <select class="em-select" id="em-type">
+                    <option value="inquiry-reply">询盘回复</option>
+                    <option value="quotation">报价邮件</option>
+                    <option value="order-followup">订单跟进</option>
+                    <option value="aftersales">售后邮件</option>
+                  </select>
+                </div>
+                <div class="em-field">
+                  <label class="em-label" for="em-lang">目标语言</label>
+                  <select class="em-select" id="em-lang">
+                    <option value="zh">中文</option>
+                    <option value="en" selected>英文</option>
+                    <option value="ja">日语</option>
+                    <option value="ko">韩语</option>
+                    <option value="de">德语</option>
+                    <option value="fr">法语</option>
+                    <option value="es">西班牙语</option>
+                    <option value="ru">俄语</option>
+                    <option value="ar">阿拉伯语</option>
+                  </select>
+                </div>
+              </div>
+              <div class="em-field">
+                <label class="em-label" for="em-tone">商务语气</label>
+                <select class="em-select" id="em-tone">
+                  <option value="formal">正式专业</option>
+                  <option value="friendly">友好礼貌</option>
+                  <option value="concise">简洁直接</option>
+                </select>
+              </div>
+              <div class="em-field">
+                <label class="em-label" for="em-context">客户背景与历史沟通</label>
+                <textarea class="em-textarea" id="em-context" rows="6" placeholder="补充客户背景信息、历史沟通要点，帮助 AI 生成更贴合的邮件内容…"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- 右侧：AI 邮件编辑区 -->
+          <div class="em-panel">
+            <div class="em-panel-header">
+              <h2 class="em-panel-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                AI 邮件编辑
+              </h2>
+              <span class="ws-status-badge ai-status-badge ai-status-online">AI 已接入 · 智谱 GLM</span>
+            </div>
+            <div class="em-panel-body em-editor-body">
+              <div class="em-field">
+                <label class="em-label" for="em-subject">邮件主题</label>
+                <input type="text" class="em-input" id="em-subject" placeholder="请输入邮件主题…">
+              </div>
+              <div class="em-field em-body-field">
+                <label class="em-label" for="em-body">邮件正文</label>
+                <textarea class="em-textarea em-body" id="em-body" placeholder="邮件正文可在此手动编辑，接入 AI 模型后将支持自动生成、润色与改写。"></textarea>
+              </div>
+            </div>
+            <div class="em-actions">
+              <div class="em-action-group">
+                <button type="button" class="em-btn primary" id="em-generate">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg>
+                  生成商务邮件
+                </button>
+                <button type="button" class="em-btn" id="em-polish">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg>
+                  邮件润色
+                </button>
+                <button type="button" class="em-btn" id="em-rewrite">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
+                  邮件改写
+                </button>
+              </div>
+              <div class="em-action-group">
+                <button type="button" class="em-btn" id="em-translate-en">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h8"/><path d="M7 5v2"/><path d="M5 12c1-2 1.5-3.5 2-5"/><path d="M9 12c-1-2-1.5-3.5-2-5"/><path d="M13 20l3.5-8 3.5 8"/><path d="M14.5 17h4"/></svg>
+                  中译英
+                </button>
+                <button type="button" class="em-btn" id="em-translate-zh">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h8"/><path d="M7 5v2"/><path d="M5 12c1-2 1.5-3.5 2-5"/><path d="M9 12c-1-2-1.5-3.5-2-5"/><path d="M13 20l3.5-8 3.5 8"/><path d="M14.5 17h4"/></svg>
+                  英译中
+                </button>
+              </div>
+              <div class="em-action-group">
+                <button type="button" class="em-btn ghost" id="em-copy">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                  复制邮件
+                </button>
+                <button type="button" class="em-btn ghost" id="em-clear">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+                  清空内容
+                </button>
+              </div>
+              <!-- P10：将邮件内容提交至 P9 审核中心 -->
+              <div class="em-action-group">
+                <button type="button" class="em-btn primary" id="em-review-btn" title="将当前邮件内容提交至AI结果审核中心">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  提交审核
+                </button>
+              </div>
+            </div>
+            <div class="em-status" id="em-status"></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========== 订单智能解析 ========== -->
+      <section class="page" id="page-parse">
+
+        <!-- 顶部业务介绍区 -->
+        <div class="op-header">
+          <div class="op-header-text">
+            <h1 class="op-title">订单智能解析</h1>
+            <p class="op-subtitle">支持 PI、PO、报价单及 Excel/PDF 文件处理，帮助跟单人员快速整理订单关键信息。</p>
+          </div>
+          <span class="ws-status-badge ai-status-badge ai-status-online">AI 解析已接入 · 智谱 GLM</span>
+        </div>
+
+        <!-- 文件上传区域 -->
+        <div class="op-card">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+              文件上传
+            </h3>
+          </div>
+          <div class="op-dropzone" id="op-dropzone">
+            <div class="op-dropzone-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg>
+            </div>
+            <p class="op-dropzone-text">拖拽文件到此处，或点击选择文件</p>
+            <p class="op-dropzone-hint">支持 PI、PO、报价单及 Excel/PDF 文件</p>
+            <input type="file" id="op-file-input" accept=".pdf,.xlsx,.xls,.csv" multiple hidden>
+          </div>
+          <div class="op-file-list" id="op-file-list"></div>
+          <!-- 订单原文粘贴区（AI 文本解析输入） -->
+          <div style="margin-top: 12px;">
+            <label class="em-label" for="op-order-text">或粘贴订单原文（PI / PO / 报价单邮件文本等）</label>
+            <textarea class="em-textarea" id="op-order-text" rows="6" style="width: 100%; box-sizing: border-box; margin-top: 6px;" placeholder="将订单原文、PI/PO 邮件内容或报价单文本粘贴到此处，点击「开始解析」后 AI 将自动提取客户名称、订单编号、产品、数量、单价、金额、币种、交货日期等关键字段。"></textarea>
+          </div>
+          <div class="op-upload-actions">
+            <button type="button" class="em-btn primary" id="op-parse-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>
+              开始解析
+            </button>
+            <button type="button" class="em-btn ghost" id="op-clear-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+              清空文件
+            </button>
+            <!-- P10：将解析结果提交至 P9 审核中心 -->
+            <button type="button" class="em-btn primary" id="op-review-btn" title="将解析结果提交至AI结果审核中心">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              提交审核
+            </button>
+          </div>
+          <div class="em-status" id="op-status"></div>
+        </div>
+
+        <!-- 订单信息提取结果区域 -->
+        <div class="op-card">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+              订单信息提取结果
+            </h3>
+            <button type="button" class="em-btn ghost" id="op-export-btn" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+              导出结果
+            </button>
+            <!-- P10：解析结果转入订单管理（无解析结果时提示，不伪造数据） -->
+            <button type="button" class="em-btn primary" id="op-transfer-btn" title="解析出订单信息后可一键转入订单管理">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+              转入订单管理
+            </button>
+          </div>
+          <div class="op-table-wrap" id="op-table-wrap">
+            <table class="op-table">
+              <thead>
+                <tr>
+                  <th>客户名称</th>
+                  <th>订单编号</th>
+                  <th>产品货号</th>
+                  <th>产品名称</th>
+                  <th>订单数量</th>
+                  <th>单价</th>
+                  <th>订单金额</th>
+                  <th>币种</th>
+                  <th>交货日期</th>
+                  <th>货量</th>
+                </tr>
+              </thead>
+              <tbody id="op-table-body"></tbody>
+            </table>
+          </div>
+          <div class="op-empty" id="op-empty">
+            <div class="op-empty-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+            </div>
+            <p class="op-empty-text">暂无解析结果</p>
+            <p class="op-empty-sub">上传订单文件并点击「开始解析」后，提取的订单字段将在此展示，支持人工核对与编辑</p>
+          </div>
+        </div>
+
+        <!-- 解析状态与异常提示区域 -->
+        <div class="op-card">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              解析状态与异常提示
+            </h3>
+          </div>
+          <div class="op-stat-grid">
+            <div class="op-stat">
+              <span class="op-stat-label">文件数量</span>
+              <span class="op-stat-value" id="op-stat-files">&mdash;</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">解析状态</span>
+              <span class="op-stat-value" id="op-stat-status">&mdash;</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">待核对字段</span>
+              <span class="op-stat-value" id="op-stat-fields">&mdash;</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">异常信息</span>
+              <span class="op-stat-value" id="op-stat-exceptions">&mdash;</span>
+            </div>
+          </div>
+          <div class="op-exception-area">
+            <p class="op-exception-empty">暂无异常提示。接入解析服务后，将自动检测订单数量不一致、交货日期冲突、金额异常与关键字段缺失等问题。</p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ========== 订单与待办管理 ========== -->
+      <section class="page" id="page-order">
+
+        <!-- 顶部业务介绍区 -->
+        <div class="op-header">
+          <div class="op-header-text">
+            <h1 class="op-title">订单与待办管理</h1>
+            <p class="op-subtitle">订单全生命周期追踪与待办事项管理，支持订单详情查看、进度推进与待办关联，让每个订单进度清晰可控。</p>
+          </div>
+          <span class="ws-status-badge ai-status-badge ai-status-online">数据已接入 · SQLite</span>
+        </div>
+
+        <!-- 订单列表区 -->
+        <div class="op-card">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 10h6M9 14h6M9 18h3"/></svg>
+              订单列表
+            </h3>
+            <button type="button" class="em-btn primary" id="od-new-order">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              新建订单
+            </button>
+            <button type="button" class="em-btn ghost" id="od-ai-btn" title="基于当前真实订单与待办数据生成 AI 分析建议">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>
+              AI 订单分析
+            </button>
+          </div>
+          <div class="op-table-wrap">
+            <table class="op-table">
+              <thead>
+                <tr>
+                  <th>订单编号</th>
+                  <th>客户名称</th>
+                  <th>订单金额</th>
+                  <th>币种</th>
+                  <th>交货日期</th>
+                  <th>订单状态</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="od-order-body"></tbody>
+            </table>
+          </div>
+          <div class="em-status" id="od-status"></div>
+          <!-- AI 分析结果展示区（默认隐藏，仅显示建议，不自动修改数据） -->
+          <div class="od-ai-result" id="od-ai-result" style="display:none; margin: 0 20px 16px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg);">
+            <div style="display:flex; align-items:center; justify-content:space-between; padding: 10px 14px; border-bottom: 1px solid var(--border);">
+              <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">AI 分析建议（仅供参考，不会自动修改任何数据）</span>
+              <button type="button" class="em-btn ghost" id="od-ai-result-close" style="padding: 2px 10px; font-size: 12px;">收起</button>
+            </div>
+            <div id="od-ai-result-content" style="padding: 12px 14px; font-size: 13px; line-height: 1.8; color: var(--text-main); white-space: pre-wrap; max-height: 400px; overflow-y: auto;"></div>
+          </div>
+        </div>
+
+        <!-- 订单详情面板（默认隐藏） -->
+        <div class="op-card od-detail-card" id="od-detail" style="display:none">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+              订单详情：<span id="od-detail-name"></span>
+            </h3>
+            <button type="button" class="em-btn ghost" id="od-detail-close">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              关闭
+            </button>
+          </div>
+          <div class="od-detail-body">
+            <!-- 产品信息 -->
+            <div class="od-detail-section">
+              <h4 class="od-section-title">产品信息</h4>
+              <div class="op-table-wrap od-inner-table">
+                <table class="op-table">
+                  <thead>
+                    <tr><th>产品货号</th><th>产品名称</th><th>数量</th><th>单价</th></tr>
+                  </thead>
+                  <tbody id="od-product-body"></tbody>
+                </table>
+              </div>
+              <div class="od-empty-inline" id="od-product-empty">暂无产品信息，请手动添加。</div>
+              <div class="od-add-row">
+                <input type="text" class="em-input od-add-input" id="od-product-sku" placeholder="产品货号">
+                <input type="text" class="em-input od-add-input" id="od-product-name" placeholder="产品名称">
+                <input type="number" class="em-input od-add-input od-add-num" id="od-product-qty" placeholder="数量">
+                <input type="text" class="em-input od-add-input od-add-num" id="od-product-price" placeholder="单价">
+                <button type="button" class="em-btn" id="od-product-add">添加产品</button>
+              </div>
+            </div>
+            <!-- 订单进度 -->
+            <div class="od-detail-section">
+              <h4 class="od-section-title">订单进度</h4>
+              <div class="od-progress" id="od-progress"></div>
+              <div class="od-progress-actions">
+                <button type="button" class="em-btn primary" id="od-progress-advance">推进至下一阶段</button>
+                <span class="od-progress-hint" id="od-progress-hint"></span>
+              </div>
+            </div>
+            <!-- 业务记录 -->
+            <div class="od-detail-section">
+              <h4 class="od-section-title">业务记录</h4>
+              <div class="od-records" id="od-records"></div>
+              <div class="od-empty-inline" id="od-records-empty">暂无业务记录。</div>
+              <div class="od-add-record">
+                <input type="text" class="em-input" id="od-record-input" placeholder="输入业务记录，如：已收到客户预付款…">
+                <button type="button" class="em-btn" id="od-record-add">添加记录</button>
+              </div>
+            </div>
+            <!-- 关联待办 -->
+            <div class="od-detail-section">
+              <h4 class="od-section-title">关联待办事项</h4>
+              <div class="op-table-wrap od-inner-table">
+                <table class="op-table">
+                  <thead>
+                    <tr><th>任务名称</th><th>负责人</th><th>截止日期</th><th>优先级</th><th>状态</th></tr>
+                  </thead>
+                  <tbody id="od-related-todo-body"></tbody>
+                </table>
+              </div>
+              <div class="od-empty-inline" id="od-related-empty">暂无关联待办，可在下方待办事项区新建并关联本订单。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 待办事项区 -->
+        <div class="op-card">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              待办事项
+            </h3>
+            <button type="button" class="em-btn primary" id="od-new-todo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              新建待办
+            </button>
+          </div>
+          <div class="op-table-wrap">
+            <table class="op-table">
+              <thead>
+                <tr>
+                  <th>任务名称</th>
+                  <th>负责人</th>
+                  <th>截止日期</th>
+                  <th>优先级</th>
+                  <th>关联订单</th>
+                  <th>状态</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="od-todo-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 新建订单模态框 -->
+        <div class="od-modal" id="od-order-modal">
+          <div class="od-modal-card">
+            <div class="od-modal-header">
+              <h3 class="od-modal-title">新建订单</h3>
+              <button type="button" class="od-modal-close" data-close="od-order-modal">&#10005;</button>
+            </div>
+            <form id="od-order-form" class="od-modal-body">
+              <div class="em-field">
+                <label class="em-label">订单编号 <span class="od-required">*</span></label>
+                <input type="text" class="em-input" id="od-form-no" placeholder="如 PO-2026-001" required>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">关联客户</label>
+                  <select class="em-select" id="od-form-customer-select">
+                    <option value="">不关联（手动输入）</option>
+                  </select>
+                </div>
+                <div class="em-field">
+                  <label class="em-label">客户名称 <span class="od-required">*</span></label>
+                  <input type="text" class="em-input" id="od-form-customer" placeholder="如 ABC Trading Co., Ltd." required>
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">订单金额</label>
+                  <input type="text" class="em-input" id="od-form-amount" placeholder="如 15000">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">币种</label>
+                  <select class="em-select" id="od-form-currency">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="CNY">CNY</option>
+                    <option value="GBP">GBP</option>
+                    <option value="JPY">JPY</option>
+                  </select>
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">交货日期</label>
+                  <input type="date" class="em-input" id="od-form-delivery">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">订单状态</label>
+                  <select class="em-select" id="od-form-status">
+                    <option value="待确认">待确认</option>
+                    <option value="生产中">生产中</option>
+                    <option value="待发货">待发货</option>
+                    <option value="运输中">运输中</option>
+                    <option value="已完成">已完成</option>
+                    <option value="已取消">已取消</option>
+                  </select>
+                </div>
+              </div>
+              <div class="od-modal-footer">
+                <button type="button" class="em-btn ghost" data-close="od-order-modal">取消</button>
+                <button type="submit" class="em-btn primary">确认新建</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- 新建待办模态框 -->
+        <div class="od-modal" id="od-todo-modal">
+          <div class="od-modal-card">
+            <div class="od-modal-header">
+              <h3 class="od-modal-title">新建待办</h3>
+              <button type="button" class="od-modal-close" data-close="od-todo-modal">&#10005;</button>
+            </div>
+            <form id="od-todo-form" class="od-modal-body">
+              <div class="em-field">
+                <label class="em-label">任务名称 <span class="od-required">*</span></label>
+                <input type="text" class="em-input" id="od-form-task" placeholder="如 跟进客户验货安排" required>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">负责人</label>
+                  <input type="text" class="em-input" id="od-form-owner" placeholder="如 张三">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">截止日期</label>
+                  <input type="date" class="em-input" id="od-form-deadline">
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">优先级</label>
+                  <select class="em-select" id="od-form-priority">
+                    <option value="高">高</option>
+                    <option value="中" selected>中</option>
+                    <option value="低">低</option>
+                  </select>
+                </div>
+                <div class="em-field">
+                  <label class="em-label">关联订单</label>
+                  <select class="em-select" id="od-form-relate">
+                    <option value="">不关联</option>
+                  </select>
+                </div>
+              </div>
+              <div class="od-modal-footer">
+                <button type="button" class="em-btn ghost" data-close="od-todo-modal">取消</button>
+                <button type="submit" class="em-btn primary">确认新建</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ========== 订单异常核对 ========== -->
+      <section class="page" id="page-spec">
+
+        <!-- 顶部业务介绍区 -->
+        <div class="op-header">
+          <div class="op-header-text">
+            <h1 class="op-title">订单异常核对</h1>
+            <p class="op-subtitle">自动比对订单与业务单证中的关键字段，识别数量、金额、交期及信息冲突，降低外贸业务差错风险。</p>
+          </div>
+          <span class="ws-status-badge ai-status-badge ai-status-online">AI 核对已接入 · 智谱 GLM</span>
+        </div>
+
+        <!-- 双栏录入区 -->
+        <div class="ck-input-grid">
+
+          <!-- 左栏：订单基准信息 -->
+          <div class="op-card">
+            <div class="op-card-header">
+              <h3 class="op-card-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 10h6M9 14h6M9 18h3"/></svg>
+                订单基准信息
+              </h3>
+              <!-- P10：从 P5 订单加载基准数据 -->
+              <div class="ck-load-order">
+                <select class="em-select" id="ck-order-select">
+                  <option value="">从订单管理加载…</option>
+                </select>
+                <button type="button" class="em-btn" id="ck-load-order-btn">加载基准</button>
+              </div>
+            </div>
+            <div class="ck-form">
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">订单编号</label>
+                  <input type="text" class="em-input" id="ck-base-no" placeholder="如 PO-2026-001">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">客户名称</label>
+                  <input type="text" class="em-input" id="ck-base-customer" placeholder="如 ABC Trading Co., Ltd.">
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">产品货号</label>
+                  <input type="text" class="em-input" id="ck-base-sku" placeholder="如 SKU-A100">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">产品名称</label>
+                  <input type="text" class="em-input" id="ck-base-pname" placeholder="如 不锈钢保温杯 500ml">
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">订单数量</label>
+                  <input type="text" class="em-input" id="ck-base-qty" placeholder="如 5000">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">单价</label>
+                  <input type="text" class="em-input" id="ck-base-price" placeholder="如 3.20">
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">订单金额</label>
+                  <input type="text" class="em-input" id="ck-base-amount" placeholder="如 16000">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">币种</label>
+                  <select class="em-select" id="ck-base-currency">
+                    <option value="">请选择</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="CNY">CNY</option>
+                    <option value="GBP">GBP</option>
+                    <option value="JPY">JPY</option>
+                  </select>
+                </div>
+              </div>
+              <div class="em-field">
+                <label class="em-label">交货日期</label>
+                <input type="date" class="em-input" id="ck-base-delivery">
+              </div>
+            </div>
+          </div>
+
+          <!-- 右栏：待核对单证信息 -->
+          <div class="op-card">
+            <div class="op-card-header">
+              <h3 class="op-card-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg>
+                待核对单证信息
+              </h3>
+              <select class="em-select ck-doc-type" id="ck-doc-type">
+                <option value="PI">PI（形式发票）</option>
+                <option value="PO">PO（采购订单）</option>
+                <option value="合同">合同</option>
+                <option value="商业发票">商业发票</option>
+                <option value="装箱单">装箱单</option>
+                <option value="其他单证">其他单证</option>
+              </select>
+            </div>
+            <div class="ck-form">
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">订单编号</label>
+                  <input type="text" class="em-input" id="ck-doc-no" placeholder="单证中的订单编号">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">客户名称</label>
+                  <input type="text" class="em-input" id="ck-doc-customer" placeholder="单证中的客户名称">
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">产品货号</label>
+                  <input type="text" class="em-input" id="ck-doc-sku" placeholder="单证中的产品货号">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">产品名称</label>
+                  <input type="text" class="em-input" id="ck-doc-pname" placeholder="单证中的产品名称">
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">订单数量</label>
+                  <input type="text" class="em-input" id="ck-doc-qty" placeholder="单证中的数量">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">单价</label>
+                  <input type="text" class="em-input" id="ck-doc-price" placeholder="单证中的单价">
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">订单金额</label>
+                  <input type="text" class="em-input" id="ck-doc-amount" placeholder="单证中的金额">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">币种</label>
+                  <select class="em-select" id="ck-doc-currency">
+                    <option value="">请选择</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="CNY">CNY</option>
+                    <option value="GBP">GBP</option>
+                    <option value="JPY">JPY</option>
+                  </select>
+                </div>
+              </div>
+              <div class="em-field">
+                <label class="em-label">交货日期</label>
+                <input type="date" class="em-input" id="ck-doc-delivery">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 核对操作与统计区 -->
+        <div class="op-card">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              核对操作
+            </h3>
+            <div class="ck-actions">
+              <button type="button" class="em-btn primary" id="ck-check-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                开始核对
+              </button>
+              <button type="button" class="em-btn ghost" id="ck-recheck-btn">重新核对</button>
+              <button type="button" class="em-btn ghost" id="ck-clear-btn">清空数据</button>
+              <button type="button" class="em-btn ghost" id="ck-export-btn" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                导出核对报告
+              </button>
+              <!-- P10：跨模块查询知识库 -->
+              <button type="button" class="em-btn ghost" id="ck-kb-btn" title="跳转外贸知识库查询贸易术语、单证规范等知识">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19a2 2 0 0 1 2-2h13"/><path d="M9 7h6M9 11h4"/></svg>
+                查询知识库
+              </button>
+              <!-- P10：将核对报告提交至 P9 审核中心 -->
+              <button type="button" class="em-btn primary" id="ck-review-btn" title="将核对报告提交至AI结果审核中心">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                提交审核
+              </button>
+              <!-- AI 分析：基于真实核对结果生成解释与建议，不修改数据 -->
+              <button type="button" class="em-btn ghost" id="ck-ai-btn" title="基于当前核对结果生成 AI 分析建议">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>
+                AI 分析
+              </button>
+            </div>
+          </div>
+          <div class="op-stat-grid">
+            <div class="op-stat">
+              <span class="op-stat-label">核对字段总数</span>
+              <span class="op-stat-value" id="ck-stat-total">—</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">一致字段数量</span>
+              <span class="op-stat-value ck-stat-ok" id="ck-stat-ok">—</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">异常字段数量</span>
+              <span class="op-stat-value ck-stat-diff" id="ck-stat-diff">—</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">待补充字段数量</span>
+              <span class="op-stat-value ck-stat-missing" id="ck-stat-missing">—</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 核对结果表 -->
+        <div class="op-card">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+              核对结果明细
+            </h3>
+          </div>
+          <div class="op-table-wrap">
+            <table class="op-table">
+              <thead>
+                <tr>
+                  <th>字段名称</th>
+                  <th>订单基准值</th>
+                  <th>单证数据</th>
+                  <th>核对结果</th>
+                  <th>异常说明</th>
+                </tr>
+              </thead>
+              <tbody id="ck-result-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 异常处理建议 -->
+        <div class="op-card">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+              异常处理建议
+            </h3>
+          </div>
+          <div class="ck-advice-area" id="ck-advice-area">
+            <div class="ck-advice-empty" id="ck-advice-empty">
+              <p class="ck-advice-empty-text">暂无核对结果。录入订单基准信息与单证数据后，点击「开始核对」将根据检测到的异常生成处理建议。</p>
+            </div>
+            <ul class="ck-advice-list" id="ck-advice-list" style="display:none;"></ul>
+          </div>
+          <!-- AI 分析结果展示区（默认隐藏，仅显示解释与建议，不修改核对结果或数据） -->
+          <div class="ck-ai-result" id="ck-ai-result" style="display:none; margin: 0 20px 16px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg);">
+            <div style="display:flex; align-items:center; justify-content:space-between; padding: 10px 14px; border-bottom: 1px solid var(--border);">
+              <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">AI 分析建议（仅供参考，不会自动修改核对结果或订单数据）</span>
+              <button type="button" class="em-btn ghost" id="ck-ai-result-close" style="padding: 2px 10px; font-size: 12px;">收起</button>
+            </div>
+            <div id="ck-ai-result-content" style="padding: 12px 14px; font-size: 13px; line-height: 1.8; color: var(--text-main); white-space: pre-wrap; max-height: 400px; overflow-y: auto;"></div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ========== 外贸知识库 ========== -->
+      <section class="page" id="page-kb">
+
+        <!-- 顶部业务介绍区 -->
+        <div class="op-header">
+          <div class="op-header-text">
+            <h1 class="op-title">外贸知识库</h1>
+            <p class="op-subtitle">集中管理外贸基础知识、贸易术语、支付结算、报关物流与业务规范，为业务团队提供统一的知识查询与沉淀平台，后续将接入 AI 语义检索与 RAG 问答。</p>
+          </div>
+          <span class="ws-status-badge ai-status-badge ai-status-online">AI 问答已接入 · 智谱 GLM</span>
+        </div>
+
+        <!-- 统计指标区 -->
+        <div class="op-card">
+          <div class="op-stat-grid">
+            <div class="op-stat">
+              <span class="op-stat-label">知识总数</span>
+              <span class="op-stat-value" id="kb-stat-total">—</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">覆盖分类数</span>
+              <span class="op-stat-value" id="kb-stat-cats">—</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">最近更新</span>
+              <span class="op-stat-value kb-stat-time" id="kb-stat-latest">—</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">当前筛选结果</span>
+              <span class="op-stat-value" id="kb-stat-filtered">—</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 搜索与筛选区 -->
+        <div class="op-card">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+              搜索与筛选
+            </h3>
+          </div>
+          <div class="kb-filter-form">
+            <div class="em-field">
+              <label class="em-label">关键词</label>
+              <input type="text" class="em-input" id="kb-search-input" placeholder="搜索知识标题或正文关键词">
+            </div>
+            <div class="em-field">
+              <label class="em-label">知识分类</label>
+              <select class="em-select" id="kb-filter-category">
+                <option value="">全部分类</option>
+                <option value="外贸基础知识">外贸基础知识</option>
+                <option value="国际贸易术语（Incoterms）">国际贸易术语（Incoterms）</option>
+                <option value="国际支付与结算">国际支付与结算</option>
+                <option value="海关与报关">海关与报关</option>
+                <option value="国际物流与运输">国际物流与运输</option>
+                <option value="外贸合同与风险控制">外贸合同与风险控制</option>
+                <option value="产品技术知识">产品技术知识</option>
+                <option value="企业内部业务规范">企业内部业务规范</option>
+              </select>
+            </div>
+            <div class="em-field">
+              <label class="em-label">关键词标签</label>
+              <select class="em-select" id="kb-filter-tag">
+                <option value="">全部标签</option>
+              </select>
+            </div>
+            <div class="kb-filter-actions">
+              <button type="button" class="em-btn primary" id="kb-search-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+                搜索
+              </button>
+              <button type="button" class="em-btn ghost" id="kb-reset-btn">重置</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI 知识问答区（基于真实知识库数据回答，不修改知识内容） -->
+        <div class="op-card">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>
+              AI 知识问答
+            </h3>
+          </div>
+          <div class="kb-qa-form" style="padding: 4px 20px 8px;">
+            <div class="em-field">
+              <label class="em-label" for="kb-qa-input">输入您的外贸业务问题，AI 将优先从知识库中检索相关条目作答</label>
+              <input type="text" class="em-input" id="kb-qa-input" placeholder="如：FOB 和 CIF 有什么区别？L/C 信用证的流程是什么？" style="margin-top: 6px;">
+            </div>
+            <div class="kb-filter-actions" style="margin-top: 8px;">
+              <button type="button" class="em-btn primary" id="kb-qa-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>
+                AI 问答
+              </button>
+            </div>
+            <div class="em-status" id="kb-qa-status"></div>
+          </div>
+          <!-- AI 问答结果展示区（默认隐藏，仅显示回答，不修改知识库内容） -->
+          <div class="kb-qa-result" id="kb-qa-result" style="display:none; margin: 0 20px 16px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg);">
+            <div style="display:flex; align-items:center; justify-content:space-between; padding: 10px 14px; border-bottom: 1px solid var(--border);">
+              <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">AI 回答（基于知识库内容，仅供参考，不会自动修改知识库）</span>
+              <button type="button" class="em-btn ghost" id="kb-qa-result-close" style="padding: 2px 10px; font-size: 12px;">收起</button>
+            </div>
+            <div id="kb-qa-result-content" style="padding: 12px 14px; font-size: 13px; line-height: 1.8; color: var(--text-main); white-space: pre-wrap; max-height: 400px; overflow-y: auto;"></div>
+          </div>
+        </div>
+
+        <!-- 知识列表区 -->
+        <div class="op-card">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19a2 2 0 0 1 2-2h13"/><path d="M9 7h6M9 11h4"/></svg>
+              知识列表
+            </h3>
+            <button type="button" class="em-btn primary" id="kb-new-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              新建知识
+            </button>
+          </div>
+          <div class="op-table-wrap">
+            <table class="op-table">
+              <thead>
+                <tr>
+                  <th>知识标题</th>
+                  <th>所属分类</th>
+                  <th>关键词标签</th>
+                  <th>更新时间</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="kb-list-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 知识详情面板（默认隐藏） -->
+        <div class="op-card" id="kb-detail" style="display:none;">
+          <div class="op-card-header">
+            <h3 class="op-card-title" id="kb-detail-title">知识详情</h3>
+            <button type="button" class="em-btn ghost" id="kb-detail-close">关闭</button>
+          </div>
+          <div class="kb-detail-body">
+            <div class="kb-detail-meta">
+              <span class="kb-detail-cat" id="kb-detail-cat"></span>
+              <span class="kb-detail-time" id="kb-detail-time"></span>
+            </div>
+            <div class="kb-detail-tags" id="kb-detail-tags"></div>
+            <div class="kb-detail-content" id="kb-detail-content"></div>
+            <div class="kb-detail-source" id="kb-detail-source"></div>
+          </div>
+        </div>
+
+        <!-- 新建/编辑知识模态框 -->
+        <div class="od-modal" id="kb-modal">
+          <div class="od-modal-card">
+            <div class="od-modal-header">
+              <h3 class="od-modal-title" id="kb-modal-title">新建知识</h3>
+              <button type="button" class="od-modal-close" data-close="kb-modal">&#10005;</button>
+            </div>
+            <form id="kb-form" class="od-modal-body">
+              <div class="em-field">
+                <label class="em-label">知识标题 <span class="od-required">*</span></label>
+                <input type="text" class="em-input" id="kb-form-title" placeholder="如 FOB 与 CIF 的核心区别" required>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">所属分类 <span class="od-required">*</span></label>
+                  <select class="em-select" id="kb-form-category" required>
+                    <option value="">请选择分类</option>
+                    <option value="外贸基础知识">外贸基础知识</option>
+                    <option value="国际贸易术语（Incoterms）">国际贸易术语（Incoterms）</option>
+                    <option value="国际支付与结算">国际支付与结算</option>
+                    <option value="海关与报关">海关与报关</option>
+                    <option value="国际物流与运输">国际物流与运输</option>
+                    <option value="外贸合同与风险控制">外贸合同与风险控制</option>
+                    <option value="产品技术知识">产品技术知识</option>
+                    <option value="企业内部业务规范">企业内部业务规范</option>
+                  </select>
+                </div>
+                <div class="em-field">
+                  <label class="em-label">关键词标签</label>
+                  <input type="text" class="em-input" id="kb-form-tags" placeholder="多个标签用逗号分隔，如 FOB,报价,海运">
+                </div>
+              </div>
+              <div class="em-field">
+                <label class="em-label">知识正文 <span class="od-required">*</span></label>
+                <textarea class="em-textarea" id="kb-form-content" rows="6" placeholder="输入知识正文内容，支持多段落文本" required></textarea>
+              </div>
+              <div class="em-field">
+                <label class="em-label">来源与参考资料</label>
+                <input type="text" class="em-input" id="kb-form-source" placeholder="如 《国际贸易实务》第7版 / ICC 官方网站">
+              </div>
+              <div class="od-modal-footer">
+                <button type="button" class="em-btn ghost" data-close="kb-modal">取消</button>
+                <button type="submit" class="em-btn primary">确认保存</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ========== 客户档案与AI记忆 ========== -->
+      <section class="page" id="page-customer">
+
+        <!-- 顶部业务介绍区 -->
+        <div class="op-header">
+          <div class="op-header-text">
+            <h1 class="op-title">客户档案与AI记忆</h1>
+            <p class="op-subtitle">集中管理外贸客户资料、联系人信息、业务偏好与沟通历史，人工维护客户长期记忆，为后续 AI Agent 自动读取客户偏好、生成跟进建议提供数据基础。</p>
+          </div>
+          <span class="ws-status-badge ai-status-badge">AI记忆接口预留</span>
+        </div>
+
+        <!-- 统计指标区 -->
+        <div class="op-card">
+          <div class="op-stat-grid">
+            <div class="op-stat">
+              <span class="op-stat-label">客户总数</span>
+              <span class="op-stat-value" id="crm-stat-total">—</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">合作客户数</span>
+              <span class="op-stat-value" id="crm-stat-active">—</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">潜在客户数</span>
+              <span class="op-stat-value" id="crm-stat-potential">—</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">A类客户数</span>
+              <span class="op-stat-value" id="crm-stat-levela">—</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 搜索与筛选区 -->
+        <div class="op-card">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+              搜索与筛选
+            </h3>
+          </div>
+          <div class="crm-filter-form">
+            <div class="em-field">
+              <label class="em-label">关键词</label>
+              <input type="text" class="em-input" id="crm-search-input" placeholder="搜索客户名称、公司、联系人、采购产品">
+            </div>
+            <div class="em-field">
+              <label class="em-label">国家/地区</label>
+              <select class="em-select" id="crm-filter-country">
+                <option value="">全部国家/地区</option>
+              </select>
+            </div>
+            <div class="em-field">
+              <label class="em-label">客户等级</label>
+              <select class="em-select" id="crm-filter-level">
+                <option value="">全部等级</option>
+                <option value="A">A类（重点客户）</option>
+                <option value="B">B类（普通客户）</option>
+                <option value="C">C类（观察客户）</option>
+              </select>
+            </div>
+            <div class="em-field">
+              <label class="em-label">客户状态</label>
+              <select class="em-select" id="crm-filter-status">
+                <option value="">全部状态</option>
+                <option value="潜在客户">潜在客户</option>
+                <option value="合作中">合作中</option>
+                <option value="暂停合作">暂停合作</option>
+              </select>
+            </div>
+            <div class="crm-filter-actions">
+              <button type="button" class="em-btn primary" id="crm-search-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+                搜索
+              </button>
+              <button type="button" class="em-btn ghost" id="crm-reset-btn">重置</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 客户列表区 -->
+        <div class="op-card">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              客户列表
+            </h3>
+            <button type="button" class="em-btn primary" id="crm-new-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              新建客户
+            </button>
+          </div>
+          <div class="op-table-wrap">
+            <table class="op-table">
+              <thead>
+                <tr>
+                  <th>客户名称</th>
+                  <th>国家/地区</th>
+                  <th>等级</th>
+                  <th>状态</th>
+                  <th>标签</th>
+                  <th>更新时间</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="crm-list-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 客户详情面板（默认隐藏） -->
+        <div class="op-card" id="crm-detail" style="display:none;">
+          <div class="op-card-header">
+            <h3 class="op-card-title" id="crm-detail-title">客户详情</h3>
+            <button type="button" class="em-btn ghost" id="crm-detail-close">关闭</button>
+          </div>
+          <div class="crm-detail-body">
+            <div class="crm-detail-badges" id="crm-detail-badges"></div>
+            <div id="crm-detail-info"></div>
+            <div class="crm-detail-section">
+              <div class="crm-section-head">
+                <h4 class="crm-section-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  沟通历史
+                </h4>
+                <button type="button" class="em-btn primary" id="crm-record-add-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  添加沟通记录
+                </button>
+              </div>
+              <div id="crm-detail-records"></div>
+            </div>
+            <div class="crm-detail-section">
+              <div class="crm-section-head">
+                <h4 class="crm-section-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  关联订单
+                </h4>
+              </div>
+              <div id="crm-detail-orders"></div>
+            </div>
+            <div class="crm-detail-section">
+              <div class="crm-section-head">
+                <h4 class="crm-section-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                  AI客户记忆
+                </h4>
+                <button type="button" class="em-btn primary" id="crm-memory-add-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  添加记忆
+                </button>
+              </div>
+              <p class="crm-memory-note">以下记忆由业务人员人工维护；未来接入 AI Agent 后将自动提取客户偏好并标注来源，人工维护与 AI 自动提取的记忆明确区分。</p>
+              <div id="crm-detail-memories"></div>
+            </div>
+
+            <!-- AI客户分析区（第九阶段） -->
+            <div class="crm-detail-section">
+              <div class="crm-section-head">
+                <h4 class="crm-section-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4 4 0 0 1 12 2z"/><path d="M5 20l2-2"/><path d="M19 20l-2-2"/></svg>
+                  AI客户分析
+                </h4>
+                <select class="em-select" id="crm-ai-action" style="width:auto;min-width:150px;">
+                  <option value="customer_profile">客户画像分析</option>
+                  <option value="comm_summary">沟通记录总结</option>
+                  <option value="need_preference">需求与偏好分析</option>
+                  <option value="followup_advice">客户跟进建议</option>
+                  <option value="memory_suggest">新客户记忆建议</option>
+                </select>
+                <button type="button" class="em-btn primary" id="crm-ai-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4 4 0 0 1 12 2z"/><path d="M5 20l2-2"/><path d="M19 20l-2-2"/></svg>
+                  开始分析
+                </button>
+              </div>
+              <p class="crm-memory-note">AI基于当前客户的真实档案、沟通记录与已有记忆进行分析，结果仅供参考，不会自动修改任何数据。AI建议的新记忆需人工确认后才会保存。</p>
+              <div class="em-status" id="crm-ai-status" style="display:none;margin:8px 0;"></div>
+              <div id="crm-ai-result" style="display:none;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0;">
+                  <span class="em-label">分析结果（仅供参考）</span>
+                  <button type="button" class="em-btn ghost" id="crm-ai-hide" style="padding:2px 10px;font-size:12px;">收起</button>
+                </div>
+                <div class="em-text" id="crm-ai-text" style="white-space:pre-wrap;background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:12px;max-height:400px;overflow-y:auto;"></div>
+              </div>
+              <div id="crm-ai-mem-suggest" style="display:none;">
+                <div style="margin:10px 0 6px;font-weight:600;color:#b45309;">待确认的AI记忆建议（点击确认后保存为AI提取记忆）</div>
+                <div id="crm-ai-mem-list"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 新建/编辑客户模态框 -->
+        <div class="od-modal" id="crm-modal">
+          <div class="od-modal-card crm-modal-card">
+            <div class="od-modal-header">
+              <h3 class="od-modal-title" id="crm-modal-title">新建客户</h3>
+              <button type="button" class="od-modal-close" data-close="crm-modal">&#10005;</button>
+            </div>
+            <form id="crm-form" class="od-modal-body">
+              <h4 class="crm-form-section">基本信息</h4>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">客户名称 <span class="od-required">*</span></label>
+                  <input type="text" class="em-input" id="crm-form-name" placeholder="如 Northwind Trading Co." required>
+                </div>
+                <div class="em-field">
+                  <label class="em-label">公司名称</label>
+                  <input type="text" class="em-input" id="crm-form-company" placeholder="客户公司全称">
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">国家/地区</label>
+                  <input type="text" class="em-input" id="crm-form-country" placeholder="如 美国 / 德国 / 阿联酋">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">客户官网</label>
+                  <input type="text" class="em-input" id="crm-form-website" placeholder="如 https://www.example.com">
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">客户来源</label>
+                  <select class="em-select" id="crm-form-source">
+                    <option value="">请选择</option>
+                    <option>主动开发</option><option>询盘平台</option><option>展会</option>
+                    <option>客户介绍</option><option>官网询盘</option><option>老客户复购</option><option>其他</option>
+                  </select>
+                </div>
+                <div class="em-field">
+                  <label class="em-label">客户等级</label>
+                  <select class="em-select" id="crm-form-level">
+                    <option value="">请选择</option>
+                    <option value="A">A类（重点客户）</option>
+                    <option value="B">B类（普通客户）</option>
+                    <option value="C">C类（观察客户）</option>
+                  </select>
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">客户状态</label>
+                  <select class="em-select" id="crm-form-status">
+                    <option value="潜在客户">潜在客户</option>
+                    <option value="合作中">合作中</option>
+                    <option value="暂停合作">暂停合作</option>
+                  </select>
+                </div>
+                <div class="em-field">
+                  <label class="em-label">客户标签</label>
+                  <input type="text" class="em-input" id="crm-form-tags" placeholder="多个标签用逗号分隔，如 重点,复购,价格敏感">
+                </div>
+              </div>
+              <h4 class="crm-form-section">联系人信息</h4>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">联系人姓名</label>
+                  <input type="text" class="em-input" id="crm-form-contact-name" placeholder="如 Mr. John Smith">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">职务</label>
+                  <input type="text" class="em-input" id="crm-form-contact-title" placeholder="如 Purchasing Manager">
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">邮箱</label>
+                  <input type="text" class="em-input" id="crm-form-email" placeholder="如 john@example.com">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">电话</label>
+                  <input type="text" class="em-input" id="crm-form-phone" placeholder="含国际区号，如 +1 555-0100">
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">WhatsApp</label>
+                  <input type="text" class="em-input" id="crm-form-whatsapp" placeholder="WhatsApp 号码">
+                </div>
+                <div class="em-field"></div>
+              </div>
+              <h4 class="crm-form-section">业务信息</h4>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">主要采购产品</label>
+                  <input type="text" class="em-input" id="crm-form-main-products" placeholder="如 不锈钢保温杯、户外水壶">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">感兴趣的产品类别</label>
+                  <input type="text" class="em-input" id="crm-form-interest" placeholder="如 保温容器、户外用品">
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">常用采购数量</label>
+                  <input type="text" class="em-input" id="crm-form-qty" placeholder="如 5000 pcs / 40HQ">
+                </div>
+                <div class="em-field">
+                  <label class="em-label">目标采购价格</label>
+                  <input type="text" class="em-input" id="crm-form-price" placeholder="如 USD 2.5-3.0/pc">
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">常用币种</label>
+                  <select class="em-select" id="crm-form-currency">
+                    <option value="">请选择</option>
+                    <option>USD</option><option>EUR</option><option>GBP</option><option>JPY</option>
+                    <option>CNY</option><option>AUD</option><option>CAD</option><option>HKD</option><option>其他</option>
+                  </select>
+                </div>
+                <div class="em-field">
+                  <label class="em-label">目标市场</label>
+                  <input type="text" class="em-input" id="crm-form-market" placeholder="如 北美商超 / 欧洲电商">
+                </div>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">付款偏好</label>
+                  <select class="em-select" id="crm-form-payment">
+                    <option value="">请选择</option>
+                    <option>T/T 电汇</option><option>L/C 信用证</option><option>D/P 付款交单</option>
+                    <option>D/A 承兑交单</option><option>O/A 赊销</option><option>西联汇款</option>
+                    <option>PayPal</option><option>其他</option>
+                  </select>
+                </div>
+                <div class="em-field">
+                  <label class="em-label">常用贸易术语</label>
+                  <select class="em-select" id="crm-form-terms">
+                    <option value="">请选择</option>
+                    <option>FOB</option><option>CIF</option><option>CFR</option><option>EXW</option>
+                    <option>FCA</option><option>CPT</option><option>CIP</option><option>DAP</option>
+                    <option>DPU</option><option>DDP</option>
+                  </select>
+                </div>
+              </div>
+              <h4 class="crm-form-section">沟通偏好</h4>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">首选沟通语言</label>
+                  <select class="em-select" id="crm-form-lang">
+                    <option value="">请选择</option>
+                    <option>英语</option><option>中文</option><option>西班牙语</option><option>法语</option>
+                    <option>德语</option><option>俄语</option><option>葡萄牙语</option><option>阿拉伯语</option>
+                    <option>日语</option><option>韩语</option><option>其他</option>
+                  </select>
+                </div>
+                <div class="em-field">
+                  <label class="em-label">商务邮件语气</label>
+                  <select class="em-select" id="crm-form-tone">
+                    <option value="">请选择</option>
+                    <option>正式商务</option><option>友好随和</option><option>简洁直接</option><option>委婉礼貌</option>
+                  </select>
+                </div>
+              </div>
+              <div class="em-field">
+                <label class="em-label">客户沟通习惯</label>
+                <input type="text" class="em-input" id="crm-form-habit" placeholder="如 偏好 WhatsApp 沟通，回复较快，重视交期承诺">
+              </div>
+              <div class="em-field">
+                <label class="em-label">特别注意事项</label>
+                <textarea class="em-textarea" id="crm-form-notes" rows="3" placeholder="如 客户对包装印刷要求严格，需提供验厂报告"></textarea>
+              </div>
+              <div class="od-modal-footer">
+                <button type="button" class="em-btn ghost" data-close="crm-modal">取消</button>
+                <button type="submit" class="em-btn primary">确认保存</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- 添加沟通记录模态框 -->
+        <div class="od-modal" id="crm-record-modal">
+          <div class="od-modal-card">
+            <div class="od-modal-header">
+              <h3 class="od-modal-title">添加沟通记录</h3>
+              <button type="button" class="od-modal-close" data-close="crm-record-modal">&#10005;</button>
+            </div>
+            <form id="crm-record-form" class="od-modal-body">
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">沟通时间 <span class="od-required">*</span></label>
+                  <input type="text" class="em-input" id="crm-record-form-time" placeholder="如 2026-10-28 14:30" required>
+                </div>
+                <div class="em-field">
+                  <label class="em-label">沟通类型 <span class="od-required">*</span></label>
+                  <select class="em-select" id="crm-record-form-type" required>
+                    <option value="客户询盘">客户询盘</option>
+                    <option value="报价沟通">报价沟通</option>
+                    <option value="样品沟通">样品沟通</option>
+                    <option value="订单沟通">订单沟通</option>
+                    <option value="售后沟通">售后沟通</option>
+                    <option value="日常跟进">日常跟进</option>
+                  </select>
+                </div>
+              </div>
+              <div class="em-field">
+                <label class="em-label">沟通内容 <span class="od-required">*</span></label>
+                <textarea class="em-textarea" id="crm-record-form-content" rows="4" placeholder="记录本次沟通的主要内容、客户提出的问题与需求" required></textarea>
+              </div>
+              <div class="em-field">
+                <label class="em-label">客户反馈</label>
+                <textarea class="em-textarea" id="crm-record-form-feedback" rows="3" placeholder="客户的态度、疑虑、确认或拒绝的要点"></textarea>
+              </div>
+              <div class="em-field">
+                <label class="em-label">下一步跟进计划</label>
+                <textarea class="em-textarea" id="crm-record-form-next" rows="3" placeholder="如 11-05 前发送修订报价单并确认样品寄送"></textarea>
+              </div>
+              <div class="od-modal-footer">
+                <button type="button" class="em-btn ghost" data-close="crm-record-modal">取消</button>
+                <button type="submit" class="em-btn primary">确认添加</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- 添加/编辑客户记忆模态框 -->
+        <div class="od-modal" id="crm-memory-modal">
+          <div class="od-modal-card">
+            <div class="od-modal-header">
+              <h3 class="od-modal-title" id="crm-memory-modal-title">添加客户记忆</h3>
+              <button type="button" class="od-modal-close" data-close="crm-memory-modal">&#10005;</button>
+            </div>
+            <form id="crm-memory-form" class="od-modal-body">
+              <div class="em-field">
+                <label class="em-label">记忆维度 <span class="od-required">*</span></label>
+                <select class="em-select" id="crm-memory-form-dimension" required>
+                  <option value="">请选择维度</option>
+                  <option>客户采购偏好</option>
+                  <option>客户产品规格要求</option>
+                  <option>客户价格敏感程度</option>
+                  <option>客户付款习惯</option>
+                  <option>客户物流偏好</option>
+                  <option>客户沟通语言</option>
+                  <option>客户商务沟通风格</option>
+                  <option>客户历史合作情况</option>
+                  <option>客户特殊要求</option>
+                  <option>客户潜在需求</option>
+                </select>
+              </div>
+              <div class="em-field">
+                <label class="em-label">记忆内容 <span class="od-required">*</span></label>
+                <textarea class="em-textarea" id="crm-memory-form-content" rows="5" placeholder="记录该维度下客户的稳定偏好或长期有效信息，如：客户偏好 FOB 上海交货，不接受 L/C 即期以外的付款方式" required></textarea>
+              </div>
+              <div class="od-modal-footer">
+                <button type="button" class="em-btn ghost" data-close="crm-memory-modal">取消</button>
+                <button type="submit" class="em-btn primary">确认保存</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ========== AI结果审核中心 ========== -->
+      <section class="page" id="page-review">
+
+        <!-- 顶部业务介绍区 -->
+        <div class="op-header">
+          <div class="op-header-text">
+            <h1 class="op-title">AI结果审核中心</h1>
+            <p class="op-subtitle">集中管理 AI 业务生成结果，通过人工审核确保邮件、订单解析及业务核对结果准确可靠，审核通过仅表示人工确认，不会自动执行发送邮件或修改订单等外部操作。</p>
+          </div>
+          <span class="ws-status-badge ai-status-badge ai-status-online">AI 分析已接入 · 智谱 GLM</span>
+        </div>
+
+        <!-- 审核数据统计 -->
+        <div class="op-card">
+          <div class="op-stat-grid rv-stat-grid">
+            <div class="op-stat">
+              <span class="op-stat-label">审核总数</span>
+              <span class="op-stat-value" id="rv-stat-total">—</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">待审核</span>
+              <span class="op-stat-value rv-stat-pending" id="rv-stat-pending">—</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">已通过</span>
+              <span class="op-stat-value rv-stat-approved" id="rv-stat-approved">—</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">已退回</span>
+              <span class="op-stat-value rv-stat-returned" id="rv-stat-returned">—</span>
+            </div>
+            <div class="op-stat">
+              <span class="op-stat-label">已拒绝</span>
+              <span class="op-stat-value rv-stat-rejected" id="rv-stat-rejected">—</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 搜索与筛选区 -->
+        <div class="op-card">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+              搜索与筛选
+            </h3>
+          </div>
+          <div class="rv-filter-form">
+            <div class="em-field">
+              <label class="em-label">关键词</label>
+              <input type="text" class="em-input" id="rv-search-input" placeholder="搜索任务编号、结果标题">
+            </div>
+            <div class="em-field">
+              <label class="em-label">来源模块</label>
+              <select class="em-select" id="rv-filter-source">
+                <option value="">全部来源</option>
+                <option value="P2 AI智能工作台">P2 AI智能工作台</option>
+                <option value="P3邮件与询盘助手">P3邮件与询盘助手</option>
+                <option value="P4订单智能解析">P4订单智能解析</option>
+                <option value="P6订单异常核对">P6订单异常核对</option>
+                <option value="P8客户档案与AI记忆">P8客户档案与AI记忆</option>
+                <option value="手动提交">手动提交</option>
+              </select>
+            </div>
+            <div class="em-field">
+              <label class="em-label">结果类型</label>
+              <select class="em-select" id="rv-filter-type">
+                <option value="">全部类型</option>
+                <option value="邮件草稿">邮件草稿</option>
+                <option value="询盘回复">询盘回复</option>
+                <option value="订单解析结果">订单解析结果</option>
+                <option value="异常核对报告">异常核对报告</option>
+                <option value="客户记忆建议">客户记忆建议</option>
+                <option value="其他">其他</option>
+              </select>
+            </div>
+            <div class="em-field">
+              <label class="em-label">审核状态</label>
+              <select class="em-select" id="rv-filter-status">
+                <option value="">全部状态</option>
+                <option value="待审核">待审核</option>
+                <option value="已通过">已通过</option>
+                <option value="已退回">已退回</option>
+                <option value="已拒绝">已拒绝</option>
+              </select>
+            </div>
+            <div class="rv-filter-actions">
+              <button type="button" class="em-btn primary" id="rv-search-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+                搜索
+              </button>
+              <button type="button" class="em-btn ghost" id="rv-reset-btn">重置</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 审核任务列表区 -->
+        <div class="op-card">
+          <div class="op-card-header">
+            <h3 class="op-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              审核任务列表
+            </h3>
+            <div class="rv-list-actions">
+              <button type="button" class="em-btn ghost" id="rv-export-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                导出CSV
+              </button>
+              <button type="button" class="em-btn primary" id="rv-new-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                手动提交审核
+              </button>
+            </div>
+          </div>
+          <div class="op-table-wrap">
+            <table class="op-table">
+              <thead>
+                <tr>
+                  <th>任务编号</th>
+                  <th>结果标题</th>
+                  <th>来源模块</th>
+                  <th>结果类型</th>
+                  <th>提交时间</th>
+                  <th>审核状态</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="rv-list-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 审核详情面板（默认隐藏） -->
+        <div class="op-card" id="rv-detail" style="display:none;">
+          <div class="op-card-header">
+            <h3 class="op-card-title" id="rv-detail-title">审核详情</h3>
+            <button type="button" class="em-btn ghost" id="rv-detail-close">关闭</button>
+          </div>
+          <div class="rv-detail-body">
+            <div class="rv-detail-badges" id="rv-detail-badges"></div>
+            <div id="rv-detail-info"></div>
+            <div class="rv-detail-section">
+              <h4 class="crm-section-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                原始生成结果
+              </h4>
+              <div class="rv-detail-content" id="rv-detail-content"></div>
+            </div>
+            <div class="rv-detail-section" id="rv-detail-structured-section" style="display:none;">
+              <h4 class="crm-section-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                结构化数据
+              </h4>
+              <div class="rv-detail-structured" id="rv-detail-structured"></div>
+            </div>
+            <div class="rv-detail-section">
+              <h4 class="crm-section-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                历史审核记录
+              </h4>
+              <div id="rv-detail-logs"></div>
+            </div>
+            <!-- AI审核意见区（第十阶段） -->
+            <div class="rv-detail-section">
+              <div class="crm-section-head">
+                <h4 class="crm-section-title">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4 4 0 0 1 12 2z"/><path d="M5 20l2-2"/><path d="M19 20l-2-2"/></svg>
+                  AI审核意见
+                </h4>
+                <button type="button" class="em-btn primary" id="rv-ai-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4 4 0 0 1 12 2z"/><path d="M5 20l2-2"/><path d="M19 20l-2-2"/></svg>
+                  AI辅助分析
+                </button>
+              </div>
+              <p class="rv-action-note">AI基于该审核任务的真实内容分析可靠性与风险，仅提供参考意见，不会自动通过、退回、拒绝或修改任何审核记录。最终审核操作须由人工点击下方审核按钮完成。</p>
+              <div class="em-status" id="rv-ai-status" style="display:none;margin:8px 0;"></div>
+              <div id="rv-ai-result" style="display:none;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0;">
+                  <span class="em-label">AI审核意见（仅供参考）</span>
+                  <button type="button" class="em-btn ghost" id="rv-ai-hide" style="padding:2px 10px;font-size:12px;">收起</button>
+                </div>
+                <div class="em-text" id="rv-ai-text" style="white-space:pre-wrap;background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:12px;max-height:400px;overflow-y:auto;"></div>
+              </div>
+            </div>
+            <div class="rv-detail-section" id="rv-detail-actions-section">
+              <h4 class="crm-section-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                审核操作
+              </h4>
+              <p class="rv-action-note">审核通过仅表示人工确认结果内容，不会自动发送邮件、修改订单或执行任何外部操作。退回和拒绝必须填写原因。</p>
+              <div class="rv-action-btns" id="rv-action-btns"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 手动提交审核任务模态框 -->
+        <div class="od-modal" id="rv-modal">
+          <div class="od-modal-card crm-modal-card">
+            <div class="od-modal-header">
+              <h3 class="od-modal-title">手动提交审核任务</h3>
+              <button type="button" class="od-modal-close" data-close="rv-modal">&#10005;</button>
+            </div>
+            <form id="rv-form" class="od-modal-body">
+              <div class="em-field">
+                <label class="em-label">结果标题 <span class="od-required">*</span></label>
+                <input type="text" class="em-input" id="rv-form-title" placeholder="如 关于德国客户保温杯询盘的回复邮件草稿" required>
+              </div>
+              <div class="em-field-row">
+                <div class="em-field">
+                  <label class="em-label">来源模块 <span class="od-required">*</span></label>
+                  <select class="em-select" id="rv-form-source" required>
+                    <option value="手动提交">手动提交</option>
+                    <option value="P2 AI智能工作台">P2 AI智能工作台</option>
+                    <option value="P3邮件与询盘助手">P3邮件与询盘助手</option>
+                    <option value="P4订单智能解析">P4订单智能解析</option>
+                    <option value="P6订单异常核对">P6订单异常核对</option>
+                    <option value="P8客户档案与AI记忆">P8客户档案与AI记忆</option>
+                  </select>
+                </div>
+                <div class="em-field">
+                  <label class="em-label">结果类型 <span class="od-required">*</span></label>
+                  <select class="em-select" id="rv-form-type" required>
+                    <option value="邮件草稿">邮件草稿</option>
+                    <option value="询盘回复">询盘回复</option>
+                    <option value="订单解析结果">订单解析结果</option>
+                    <option value="异常核对报告">异常核对报告</option>
+                    <option value="客户记忆建议">客户记忆建议</option>
+                    <option value="其他">其他</option>
+                  </select>
+                </div>
+              </div>
+              <div class="em-field">
+                <label class="em-label">原始生成结果 <span class="od-required">*</span></label>
+                <textarea class="em-textarea" id="rv-form-content" rows="7" placeholder="粘贴 AI 生成的原始结果或待审核的业务内容，支持多段落文本" required></textarea>
+              </div>
+              <div class="em-field">
+                <label class="em-label">结构化数据（可选，JSON 格式）</label>
+                <textarea class="em-textarea" id="rv-form-structured" rows="4" placeholder='如 {"收件人":"john@example.com","主题":"Re: Inquiry about vacuum flasks"}，留空表示无结构化数据'></textarea>
+              </div>
+              <div class="od-modal-footer">
+                <button type="button" class="em-btn ghost" data-close="rv-modal">取消</button>
+                <button type="submit" class="em-btn primary">提交审核</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- 审核操作模态框（通过/退回/拒绝共用） -->
+        <div class="od-modal" id="rv-action-modal">
+          <div class="od-modal-card">
+            <div class="od-modal-header">
+              <h3 class="od-modal-title" id="rv-action-modal-title">审核操作</h3>
+              <button type="button" class="od-modal-close" data-close="rv-action-modal">&#10005;</button>
+            </div>
+            <form id="rv-action-form" class="od-modal-body">
+              <div class="em-field">
+                <label class="em-label">审核人 <span class="od-required">*</span></label>
+                <input type="text" class="em-input" id="rv-action-reviewer" placeholder="输入审核人姓名" required>
+              </div>
+              <div class="em-field">
+                <label class="em-label" id="rv-action-comment-label">审核意见（可选）</label>
+                <textarea class="em-textarea" id="rv-action-comment" rows="4" placeholder="填写审核意见或退回/拒绝原因"></textarea>
+              </div>
+              <div class="rv-action-warning" id="rv-action-warning" style="display:none;"></div>
+              <div class="od-modal-footer">
+                <button type="button" class="em-btn ghost" data-close="rv-action-modal">取消</button>
+                <button type="submit" class="em-btn primary" id="rv-action-submit-btn">确认</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <script src="./js/api.js?v=20261105a1"></script>
+
+  <script src="./js/app.js?v=20261105a1"></script>
+  
+  <script>
+   // 登录页密码显示/隐藏切换（纯 UI 交互，不涉及登录验证逻辑）
+   (function () {
+   var toggle = document.getElementById('login-pwd-toggle');
+   var pwd = document.getElementById('login-password');
+   if (toggle && pwd) {
+   toggle.addEventListener('click', function () {
+   var show = pwd.type === 'password';
+   pwd.type = show ? 'text' : 'password';
+   toggle.classList.toggle('active', show);
+   });
+   }
+   })();
+  </script>
+  
+  </body>
+  </html>
